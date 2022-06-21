@@ -39,8 +39,22 @@
         />
       </div>
       <br />
+      <div>
+        <!-- <div class="errMsg"> -->
+        <label>Phone number:</label>
+        <br>
+        <input class="phoneNumber" pattern="/^(\+|00)[0-9]{1,3}[0-9]{4,14}(?:x.+)?$/" placeholder="Input number" name="phoneNumber" required />
+      </div>
+      <br />
+      <div>
+        <label>Address:</label>
+        <br>
+        <input class="address" placeholder=" input Address" name="address" required />
+      </div>
+      <br />
 
       <div>
+        <div class="passMsg">
         <label>Password:</label><br>
         <input
           class="pass"
@@ -63,25 +77,13 @@
         />
       </div>
       <br>
-        <div>
-          <label>Phone number:</label>
-          <br>
-          <input class="phoneNumber" placeholder="Input number" name="phoneNumber" required />
-        </div>
-        <br />
-
-        <div>
-          <label>Address:</label>
-          <br>
-          <input class="address" placeholder=" input Address" name="address" required />
-        </div>
-        <br />
+      
         
       <button type="submit" class="signUp">Sign-up</button>
     </form>
     <p>Already have an account? <a href="./login.html" id="login">Login</a></p>
     
-    <p><a href="./index.html">Back to Homepage</a></p>
+    <p><a href="/index.html">Back to Homepage</a></p>
 
     <script src="./scripts/register.js"></script>
   </body>
