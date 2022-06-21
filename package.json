@@ -21,8 +21,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-dev": "nodemon app.js",
-    "start": "node app.js",
+    "start-dev": "npm run build && nodemon app.js",
+    "build": "babel app.js -d dist",
+    "start":"npm run build && node app.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
@@ -35,6 +36,9 @@
   "author": "lucis",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
     "nodemon": "^2.0.16"
   }
 }
