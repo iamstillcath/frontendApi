@@ -74,7 +74,7 @@ app.use((req, res, next) => {
 });
 
 
-app.get('/',function(req,res){
+app.get('/frontendapi.netlify.app',function(req,res){
   res.sendFile(path.join(__dirname+'../front/index.html'));
 });
 
@@ -83,7 +83,7 @@ app.get('/',function(req,res){
 // })
 
 app.use("/parcels", orderRoute);
-app.use("/frontendapi.netlify.app/user", userRoute);
+app.use("/user", userRoute);
 
 app.use((req, res, next) => {
   const error = new Error("wrong route input");
