@@ -9,26 +9,26 @@ if(!token){
 const changeDestination = e => {
   e.preventDefault();
 
-  fetch("parcels/delete", {
-    method: "DELETE",
+  fetch("parcels/destination", {
+    method: "PUT",
     headers: {
       "Content-type": "application/json",
       Authorization: 'Bearer ' + token
     },
     body: JSON.stringify({
-      orderId: document.getElementById("ordersId").value,
+      ordersId: document.getElementById("ordersId").value,
+      destination: document.getElementById("destination").value,
     
     })
   })
     .then(res => res.json())
-    .then(data => {
-      console.log(data);
-      if (data) {
-        alert("Order successfully Deleted!");
-      window.location.href = "./user.html";
-    } else {
-      alert(data.message)}
-    
+    .then(res => {
+      if (res.token) {
+        alert("Destination changed successfully!");
+        window.location.href = "./user.html";
+      } else if (res) {
+        alert(res.error)
+      }
     })
     .catch();
 };

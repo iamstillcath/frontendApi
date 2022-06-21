@@ -1,11 +1,14 @@
 body {
   width: 100%;
   padding: 40px;
-  background:url(/img/parcel.png);
+  background:url("./parcel.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
- 
+.logo{
+  height: 70px;
+margin: 0px;
+}
   
   .form {
     top: 110px;
@@ -17,14 +20,17 @@ body {
   }
   
   label{
-    font-size: 22px;
+    font-size: 28px;
+    font-weight: bold;
    }
-input {
-    width: 100px;
-    min-width: 50%;
-    height: 25px;
-    border-radius: 5px;
-  }
+   input {
+    max-width: 100%;
+      width: 450px;
+      height: 30px;
+      border-radius: 5px;
+    border: 3px solid black;
+    }
+    
   
   .loginBtn {
     width: 150px;
@@ -37,7 +43,6 @@ input {
     cursor: pointer;
     align-items: center;
     justify-content: center;
-    /* margin-left: 24%; */
   }
   
   .loginBtn:hover {

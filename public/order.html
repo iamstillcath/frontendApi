@@ -48,6 +48,19 @@
           </form>
         </div>
       </section>
+
+      <script>
+        function initMap(){
+           const pickup = document.getElementById('pickupLocation');
+           const destination = document.getElementById('destination');
+           const newDest = document.getElementById('currentLocation');
+
+           const autocompletePickup = new google.maps.places.Autocomplete(pickup);
+           const autocompleteDestination = new google.maps.places.Autocomplete(destination);
+           const autocompletenDest = new google.maps.places.Autocomplete(newDest);
+        }
+    </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3FQeb4_K4bYBx-R_6W6HbxLhMWRH6Unc&libraries=places&callback=initMap"></script>
       <script src="./scripts/order.js"></script>
 </body>
 </html>

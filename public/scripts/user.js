@@ -48,9 +48,11 @@ fetch("/parcels/user", {
         "delivered"
       ).innerHTML = `${Delivered}`;
 
-  
     }
   });
+
+  
+  
 
 const logoutBtn = document.getElementById('logout');
 
@@ -73,6 +75,18 @@ const renderTableData = (data, orderTable) => {
                           <td>${output.status}</td>
                            `;
     orderTable.append(parcelRow);
+
+    const dest = document.createElement('h2');
+    dest.className = ('destinationh2');
+    dest.innerHTML = `<a href="destinatnEdit.html" id="changeDestination"> <i class="fas fa-edit"></i></a>`;
+    parcelRow.append(dest);
+  
+    
+    const cancel = document.createElement('h2');
+    cancel.className = ('destinationh2');
+    cancel.innerHTML = `<a href="./delete.html" id="changeDestination"> <i class="fas fa-times"></i></a>`;
+    parcelRow.append(cancel);
+
   });
 };
 

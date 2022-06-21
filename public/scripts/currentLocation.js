@@ -22,13 +22,13 @@ const currentLocation = e => {
     })
   })
     .then(res => res.json())
-    .then(data => {
-      console.log(data);
-      if (data) {
+    .then(res => {
+      console.log("this is res",res)
+      if (res.message) {
         alert("Current Location changed successfully!");
         window.location.href = "./admin.html";
       } else {
-      alert(data.message)}
+      alert(res.error)}
     })
     .catch();
 };

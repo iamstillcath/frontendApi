@@ -21,12 +21,12 @@ const changeStatus = e => {
     })
   })
     .then(res => res.json())
-    .then(data => {
-      if (data.status===1) {
+    .then(res => {
+      if (res.status===1) {
         alert("Status changed successfully!");
         window.location.href = "./admin.html";
       } else  {
-        alert(data.message)
+        alert(res.error)
       }
     })
     .catch();

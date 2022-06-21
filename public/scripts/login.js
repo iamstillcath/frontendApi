@@ -12,11 +12,10 @@ const login = (e) => {
     }),
   })
     .then((res) => res.json())
-    .then((data) => {
-      if (data.token) {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("userId", data.userId);
-        localStorage.setItem('role', data.role);
+    .then((res) => {
+      if (res.token) {
+        localStorage.setItem("token", res.token);
+        localStorage.setItem('role', res.role);
 
         const role=localStorage.getItem('role');
         if(role==="user"){
@@ -25,7 +24,7 @@ const login = (e) => {
         }else{ window.location.href = "./admin.html"
       }
       } else {
-        alert(data.message);
+        alert(res.message);
       }
     })
     .catch() ;
