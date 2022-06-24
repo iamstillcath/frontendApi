@@ -1,4 +1,5 @@
 const token = localStorage.getItem('token');
+const id=localStorage.getItem('orderId');
 
 
 if(!token){
@@ -9,21 +10,20 @@ if(!token){
 const changeDestination = e => {
   e.preventDefault();
 
-  fetch("parcels/destination", {
+  fetch(`parcels/${id}/destination`, {
     method: "PUT",
     headers: {
       "Content-type": "application/json",
       Authorization: 'Bearer ' + token
     },
     body: JSON.stringify({
-      ordersId: document.getElementById("ordersId").value,
       destination: document.getElementById("destination").value,
     
     })
   })
     .then(res => res.json())
     .then(res => {
-      if (res.token) {
+      if (res.message) {
         alert("Destination changed successfully!");
         window.location.href = "./user.html";
       } else if (res) {

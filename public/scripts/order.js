@@ -1,19 +1,17 @@
 const userId = localStorage.getItem("userId");
 const token = localStorage.getItem("token");
 
-
 if (!token) {
   window.location.href = "./login.html";
 }
 
-
 const theOrder = (e) => {
   e.preventDefault();
-  fetch("/parcels" , {
+  fetch("/parcels", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: 'Bearer ' + token
+      Authorization: "Bearer " + token,
     },
     body: JSON.stringify({
       user_Id: localStorage.getItem("userId"),
@@ -26,22 +24,21 @@ const theOrder = (e) => {
       recipientNumber: document.getElementById("recipientNumber").value,
     }),
   })
-    .then((res) =>res.json())
+    .then((res) => res.json())
     .then((data) => {
-      if (data.token) {
-        alert("parcel created successfully!")
-        document.getElementById("product").value=""
-       document.getElementById("price").value=""
-       document.getElementById("pickupLocation").value=""
-         document.getElementById("currentLocation").value=""
-         document.getElementById("destination").value=""
-        document.getElementById("recipientName").value=""
-      document.getElementById("recipientNumber").value=""
+      if (data.message) {
+        alert("parcel created successfully!");
+        document.getElementById("product").value = " ";
+        document.getElementById("price").value = " ";
+        document.getElementById("pickupLocation").value = " ";
+        document.getElementById("currentLocation").value = " ";
+        document.getElementById("destination").value = " ";
+        document.getElementById("recipientName").value = " ";
+        document.getElementById("recipientNumber").value = " ";
         window.location.href = "./user.html";
       } else {
-        alert(data.message)
-        };
-
+        alert(data.message);
+      }
     })
     .catch((error) => console.log("error occured", error));
 };

@@ -24,3 +24,9 @@ table , tr,th{
     text-align: center;
   
 }
+
+h2{
+    font-size: 28px;
+    color: black;
+    display: inline-block;
+  }

@@ -1,6 +1,5 @@
 const token = localStorage.getItem('token');
-
-
+const id=localStorage.getItem('orderId');
 if(!token){
   window.location.href = './login.html';
 }
@@ -9,14 +8,14 @@ if(!token){
 const currentLocation = e => {
   e.preventDefault();
 
-  fetch("parcels/currentLocation", {
+  fetch(`parcels/${id}/currentLocation`, {
     method: "PUT",
     headers: {
       "Content-type": "application/json",
       Authorization: 'Bearer ' + token
     },
     body: JSON.stringify({
-      statusId: document.getElementById("ordersId").value,
+      orderId: id,
       currentLocation: document.getElementById("destination").value,
     
     })

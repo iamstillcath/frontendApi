@@ -47,5 +47,29 @@ const renderTableData = (data, ordersTable) => {
     ordersTable.append(outputRow);
 
 
+    const dest = document.createElement("h2");
+    dest.innerHTML = `<i class="fas fa-edit"></i>`;
+   dest.className = "locat";
+    outputRow.append(dest);
+
+    const status = document.createElement("h2");
+    status.className = "destinationh";
+    status.innerHTML = `<a href="/status.html"><i class="fa-thin fa-check"></i></a>`;
+    outputRow.append(status);
+
+
+    dest.addEventListener("click",function(e){
+      e.preventDefault();
+      window.location.href="/currentLocation.html"
+      const trId = e.target.closest("tr").children[0].innerHTML;
+     localStorage.setItem("orderId", trId);
+    })
+
+    status.addEventListener("click",function(e){
+      e.preventDefault();
+      const trId = e.target.closest("tr").children[0].innerHTML;
+      localStorage.setItem("orderId", trId);
+      window.location.href="/status.html"
+    })
   });
 };

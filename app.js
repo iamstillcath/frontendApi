@@ -81,7 +81,7 @@ app.get('/',function(req,res){
 
 
 app.use("/parcels", orderRoute);
-app.use("/master--frontendapi.netlify.app/user", userRoute);
+app.use("/user", userRoute);
 
 app.use((req, res, next) => {
   const error = new Error("wrong route input");

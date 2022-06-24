@@ -1,5 +1,5 @@
 const token = localStorage.getItem('token');
-
+const id=localStorage.getItem('orderId');
 
 if(!token){
   window.location.href = './login.html';
@@ -8,14 +8,14 @@ if(!token){
 
 const changeStatus = e => {
   e.preventDefault();
-  fetch("parcels/status", {
+  fetch(`parcels/${id}/status`, {
     method: "PUT",
     headers: {
       "Content-type": "application/json",
       Authorization: 'Bearer ' + token
     },
     body: JSON.stringify({
-      statusId: document.getElementById("orderId").value,
+      orderId: id,
       status: document.getElementById("status").value,
      
     })
