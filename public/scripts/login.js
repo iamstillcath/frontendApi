@@ -1,7 +1,7 @@
 const login = (e) => {
   e.preventDefault();
 
-  fetch("/frontendapi.netlify.app/user/login", {
+  fetch("/master--frontendapi.netlify.app/user/login", {
     method: "POST",
     headers: {
       "content-type": "application/json",
