@@ -74,7 +74,7 @@ app.use((req, res, next) => {
 });
 
 
-app.get('/backfiles.herokuapp.com',function(req,res){
+app.get('/',function(req,res){
   res.sendFile(path.join(__dirname+'../front/index.html'));
 });
 
