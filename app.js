@@ -74,14 +74,14 @@ app.use((req, res, next) => {
 });
 
 
-app.get('/',function(req,res){
+app.get('/backfiles.herokuapp.com',function(req,res){
   res.sendFile(path.join(__dirname+'../front/index.html'));
 });
 
 
 
 app.use("/parcels", orderRoute);
-app.use("/backfiles.herokuapp.com/user", userRoute);
+app.use("/user", userRoute);
 
 app.use((req, res, next) => {
   const error = new Error("wrong route input");
