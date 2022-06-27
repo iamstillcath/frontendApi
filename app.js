@@ -9,7 +9,7 @@ const path = require("path");
 const cors =require("cors")
 require("dotenv").config();
 
-const PORT = process.env.PORT || "backfiles.herokuapp.com"|| 5000 ;
+const PORT = process.env.PORT|| 5000 ;
 
 let options = {
   swaggerDefinition: {
@@ -81,7 +81,7 @@ app.get('/',function(req,res){
 
 
 app.use("/parcels", orderRoute);
-app.use("/user", userRoute);
+app.use("/backfiles.herokuapp.com/user", userRoute);
 
 app.use((req, res, next) => {
   const error = new Error("wrong route input");
