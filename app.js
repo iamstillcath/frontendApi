@@ -80,8 +80,8 @@ app.get('/',function(req,res){
 
 
 
-app.use("/parcels", orderRoute);
-app.use("/backendfiles.netlify.app/user", userRoute);
+app.use("/backfiles.herokuapp.com/parcels", orderRoute);
+app.use("/backfiles.herokuapp.com/user", userRoute);
 
 app.use((req, res, next) => {
   const error = new Error("wrong route input");
