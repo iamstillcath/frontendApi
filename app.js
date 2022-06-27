@@ -80,7 +80,7 @@ app.get('/',function(req,res){
 
 
 
-app.use("/backfiles.herokuapp.com/parcels", orderRoute);
+app.use("/parcels", orderRoute);
 app.use("/backfiles.herokuapp.com/user", userRoute);
 
 app.use((req, res, next) => {
