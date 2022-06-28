@@ -5,10 +5,10 @@ if(!token){
   window.location.href = './login.html';
 }
 
-
+const url="https://backfiles.herokuapp.com"
 const changeStatus = e => {
   e.preventDefault();
-  fetch(`parcels/${id}/status`, {
+  fetch(`${url}/parcels/${id}/status`, {
     method: "PUT",
     headers: {
       "Content-type": "application/json",

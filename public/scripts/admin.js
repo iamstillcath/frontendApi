@@ -10,9 +10,9 @@ logout.addEventListener("click", function () {
   localStorage.clear();
   window.location.href = "./login.html";
 });
-
+const url="https://backfiles.herokuapp.com"
 const userId = localStorage.getItem("userId");
-fetch("/parcels", {
+fetch(`${url}/parcels`, {
   method: "GET",
   headers: {
     Authorization: 'Bearer ' + token

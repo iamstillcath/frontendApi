@@ -4,10 +4,10 @@ const token = localStorage.getItem("token");
 if (!token) {
   window.location.href = "./login.html";
 }
-
+const url="https://backfiles.herokuapp.com"
 const theOrder = (e) => {
   e.preventDefault();
-  fetch("/parcels", {
+  fetch(`${url}/parcels`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

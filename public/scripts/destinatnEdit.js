@@ -6,11 +6,11 @@ if(!token){
   window.location.href = './login.html';
 }
 
-
+const url="https://backfiles.herokuapp.com"
 const changeDestination = e => {
   e.preventDefault();
 
-  fetch(`parcels/${id}/destination`, {
+  fetch(`${url}/parcels/${id}/destination`, {
     method: "PUT",
     headers: {
       "Content-type": "application/json",

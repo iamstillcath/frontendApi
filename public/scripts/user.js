@@ -4,8 +4,9 @@ if (!token) {
   window.location.href = "./login.html";
 }
 
+const url="https://backfiles.herokuapp.com"
 const userId = localStorage.getItem("userId");
-fetch("/parcels/user", {
+fetch(`${url}/parcels/user`, {
   method: "GET",
   headers: {
     Authorization: "Bearer " + token,

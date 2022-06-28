@@ -1,8 +1,8 @@
-const url = "https://send-it-back-app.herokuapp.com";
+ const url="https://backfiles.herokuapp.com"
 const register = (e) => {
   e.preventDefault();
 
-  fetch(`/user/signup`, {
+  fetch(`${url}/user/signup`, {
     method: "POST",
     headers: {
       Accept: "application/json, text/plain, */*",
