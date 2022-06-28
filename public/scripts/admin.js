@@ -15,6 +15,7 @@ const userId = localStorage.getItem("userId");
 fetch(`${url}/parcels`, {
   method: "GET",
   headers: {
+    "Content-type":"application/x-www-form-urlencoded",
     Authorization: 'Bearer ' + token
   },
 })

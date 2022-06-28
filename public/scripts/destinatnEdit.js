@@ -13,7 +13,7 @@ const changeDestination = e => {
   fetch(`${url}/parcels/${id}/destination`, {
     method: "PUT",
     headers: {
-      "Content-type": "application/json",
+      "Content-type": "application/x-www-form-urlencoded",
       Authorization: 'Bearer ' + token
     },
     body: JSON.stringify({

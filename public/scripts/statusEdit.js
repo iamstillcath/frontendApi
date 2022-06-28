@@ -11,7 +11,7 @@ const changeStatus = e => {
   fetch(`${url}/parcels/${id}/status`, {
     method: "PUT",
     headers: {
-      "Content-type": "application/json",
+      "Content-type":"application/x-www-form-urlencoded",
       Authorization: 'Bearer ' + token
     },
     body: JSON.stringify({
