@@ -7,7 +7,7 @@ const login = (e) => {
   fetch(`${url}/user/login`, {
     method: "POST",
     headers: {
-      "content-type": "application/x-www-form-urlencoded",
+      Accept: "application/json, text/plain, */*", "Content-Type": "application/json"
     },
     body: JSON.stringify({
       email: document.querySelector(".email").value,
