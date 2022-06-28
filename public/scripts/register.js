@@ -6,7 +6,7 @@ const register = (e) => {
     method: "POST",
     headers: {
       Accept: "application/json, text/plain, */*",
-      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": "application/json/x-www-form-urlencoded",
     },
     body: JSON.stringify({
       name: document.querySelector(".name").value,

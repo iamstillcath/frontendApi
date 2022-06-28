@@ -7,7 +7,7 @@ const login = (e) => {
   fetch(`${url}/user/login`, {
     method: "POST",
     headers: {
-      "content-type": "application/x-www-form-urlencoded",
+      "content-type": "application/json/x-www-form-urlencoded",
     },
     body: JSON.stringify({
       email: document.querySelector(".email").value,
@@ -17,7 +17,7 @@ const login = (e) => {
     .then((res) => res.json())
     .then((res) => {
       console.log("this is res",res)
-      if (res) {
+      if (res.token) {
         localStorage.setItem("token", res.token);
         localStorage.setItem('role', res.role);
 
