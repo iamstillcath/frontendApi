@@ -83,9 +83,11 @@ const renderTableData = (data, orderTable) => {
     const id = localStorage.getItem("orderId");
     cancel.addEventListener("click", function (e) {
       e.preventDefault();
+
+      const url = "https://backfiles.herokuapp.com";
       const deleted = confirm("do u want to delete");
       if (deleted) {
-        fetch(`parcels/${id}/delete`, {
+        fetch(`${url}/parcels/${id}/delete`, {
           method: "DELETE",
           headers: {
             "Content-type": "application/json",
@@ -97,7 +99,7 @@ const renderTableData = (data, orderTable) => {
         })
           .then((res) => res.json())
           .then((res) => {
-            console.log("this is res",res)
+            console.log("this is res", res);
             if (res.message === "Order Deleted") {
               alert("Order successfully Deleted!");
               window.location.href = "user.html";
