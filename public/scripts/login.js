@@ -6,9 +6,9 @@ const login = (e) => {
 
   fetch(`${url}/user/login`, {
     method: "POST",
-    headers: {
-      Accept: "application/json, text/plain, */*", "Content-Type": "application/x-www-form-urlencoded"
-    },
+    // headers: {
+    //   Accept: "application/json, text/plain, */*", "Content-Type": "application/json"
+    // },
     body: JSON.stringify({
       email: document.querySelector(".email").value,
       password: document.querySelector(".pass").value,
