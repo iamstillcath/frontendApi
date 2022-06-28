@@ -97,6 +97,7 @@ const renderTableData = (data, orderTable) => {
         })
           .then((res) => res.json())
           .then((res) => {
+            console.log("this is res",res)
             if (res.message === "Order Deleted") {
               alert("Order successfully Deleted!");
               window.location.href = "user.html";
