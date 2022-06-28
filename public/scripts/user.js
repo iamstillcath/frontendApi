@@ -4,12 +4,13 @@ if (!token) {
   window.location.href = "./login.html";
 }
 
-const url="https://backfiles.herokuapp.com"
+const url = "https://backfiles.herokuapp.com";
 const userId = localStorage.getItem("userId");
 fetch(`${url}/parcels/user`, {
   method: "GET",
   headers: {
-    "Content-type":"application/x-www-form-urlencoded",
+    Accept: "*/*",
+    "Content-Type": "application/json",
     Authorization: "Bearer " + token,
   },
 })
@@ -72,44 +73,41 @@ const renderTableData = (data, orderTable) => {
     cancel.innerHTML = `<a href="./delete.html"> <i class="fas fa-times"></i></a>`;
     parcelRow.append(cancel);
 
-
-    dest.addEventListener("click",function(e){
+    dest.addEventListener("click", function (e) {
       e.preventDefault();
-      window.location.href="destinatnEdit.html"
+      window.location.href = "destinatnEdit.html";
       const trId = e.target.closest("tr").children[0].innerHTML;
       localStorage.setItem("orderId", trId);
     });
 
-    const id=localStorage.getItem('orderId');
-    cancel.addEventListener("click",function(e){
+    const id = localStorage.getItem("orderId");
+    cancel.addEventListener("click", function (e) {
       e.preventDefault();
-      const deleted=confirm("do u want to delete")
-      if (deleted){
+      const deleted = confirm("do u want to delete");
+      if (deleted) {
         fetch(`parcels/${id}/delete`, {
           method: "DELETE",
           headers: {
             "Content-type": "application/json",
-            Authorization: 'Bearer ' + token
+            Authorization: "Bearer " + token,
           },
           body: JSON.stringify({
-            orderId: id
+            orderId: id,
+          }),
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            if (res.message === "Order Deleted") {
+              alert("Order successfully Deleted!");
+              window.location.href = "user.html";
+            } else {
+              alert(res.error);
+            }
           })
-        })
-        .then(res => res.json())
-        .then(res => {
-          if (res.message==="Order Deleted") {
-            alert("Order successfully Deleted!");
-            window.location.href="user.html"
-        } else {
-          alert(res.error)}
-        
-        })
-        .catch();
+          .catch();
       }
       const trId = e.target.closest("tr").children[0].innerHTML;
       localStorage.setItem("orderId", trId);
-
-    })
+    });
   });
-
 };

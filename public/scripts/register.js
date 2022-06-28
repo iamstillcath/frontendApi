@@ -1,11 +1,12 @@
- const url="https://backfiles.herokuapp.com"
+const url = "https://backfiles.herokuapp.com";
 const register = (e) => {
   e.preventDefault();
 
   fetch(`${url}/user/signup`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
+      Accept: "*/*",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       name: document.querySelector(".name").value,
@@ -18,7 +19,7 @@ const register = (e) => {
   })
     .then((res) => res.json())
     .then((res) => {
-      console.log("this is res signup",res)
+      console.log("this is res signup", res);
       if (res.token) {
         localStorage.setItem("token", res.token);
         localStorage.setItem("role", res.role);
