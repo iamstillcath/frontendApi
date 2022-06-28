@@ -18,6 +18,7 @@ const register = (e) => {
   })
     .then((res) => res.json())
     .then((res) => {
+      console.log("this is res signup",res)
       if (res.token) {
         localStorage.setItem("token", res.token);
         localStorage.setItem("role", res.role);
