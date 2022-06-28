@@ -1,3 +1,4 @@
+console.log("this is here")
 const login = (e) => {
   e.preventDefault();
 
@@ -15,7 +16,8 @@ const login = (e) => {
   })
     .then((res) => res.json())
     .then((res) => {
-      if (res.token) {
+      console.log("this is res",res)
+      if (res) {
         localStorage.setItem("token", res.token);
         localStorage.setItem('role', res.role);
 
