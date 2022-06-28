@@ -154,7 +154,7 @@ router.post("/signup", (req, res, next) => {
  */
 
 router.post("/login", (req, res, next) => {
-  console.log(req.body)
+  return  res.status(404).json({message: req.body})
   User.find({ email: req.body.email })
     .exec()
     .then((user) => {
