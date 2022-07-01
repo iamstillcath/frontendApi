@@ -12,12 +12,13 @@ const login = (e) => {
     },
     body: JSON.stringify({
       email: document.querySelector(".email").value,
+      
       password: document.querySelector(".pass").value,
     }),
+  
   })
     .then((res) => res.json())
     .then((res) => {
-      console.log("this is res", res);
       if (res.token) {
         localStorage.setItem("token", res.token);
         localStorage.setItem("role", res.role);

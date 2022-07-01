@@ -1,8 +1,8 @@
 a{
     text-decoration: none;
-    border: 2px solid grey;
+    border: 2px  grey;
     border-radius: 4px;
-    background-color: blue;
+    /* background-color: blue; */
     color: black
 }
 h1{
@@ -29,4 +29,6 @@ h2{
     font-size: 28px;
     color: black;
     display: inline-block;
-  }
+
+} 
+  

@@ -6,15 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Parcel delivery</title>
     <link
-    rel="stylesheet"
-    type="text/css"
-    media="screen"
-    href="./styles/register.css"
-  />
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="./styles/register.css"
+    />
   </head>
   <body>
-    
-  <img class="logo" src="./styles/parcel-img.jpg">
+    <img class="logo" src="./styles/parcel-img.jpg" />
     <form id="registerpage">
       <h1>Parcel Delivery!!!</h1>
       <br />
@@ -22,15 +21,16 @@
       <br />
       <div>
         <label>Name:</label>
-        <br>
+        <br />
         <input class="name" placeholder="Input name" name="name" required />
       </div>
       <br />
 
       <div>
         <label>Email Address:</label>
-        <br>
+        <br />
         <input
+        autocomplete="off"
           class="email"
           type="email"
           placeholder="Input email"
@@ -40,24 +40,36 @@
       </div>
       <br />
       <div>
-        <div class="errMsg">
-        <label>Phone number:</label>
-        <br>
-        <input class="phoneNumber" pattern="/^(\+|00)[0-9]{1,3}[0-9]{4,14}(?:x.+)?$/" placeholder="Input number" name="phoneNumber" required />
-        <p class="text">(+234)mobile number must start with a country code</p> 
+          <label>Phone number:</label>
+          <br />
+          <input
+            class="phoneNumber"
+            pattern="/^(\+|00)[0-9]{1,3}[0-9]{4,14}(?:x.+)?$/"
+            placeholder="Input number"
+            name="phoneNumber"
+            required
+          />
+          <p class="text">(+234)mobile number must start with a country code</p>
       </div>
+      <p class="errMsg"></p>
       <br />
       <div>
         <label>Address:</label>
-        <br>
-        <input class="address" id="address" placeholder=" input Address" name="address" required />
+        <br />
+        <input
+          class="address"
+          id="address"
+          placeholder=" input Address"
+          name="address"
+          required
+        />
       </div>
       <br />
 
       <div>
-        
-        <label>Password:</label><br>
+        <label>Password:</label><br />
         <input
+        autocomplete="off"
           class="pass"
           type="password"
           placeholder="input password"
@@ -68,7 +80,7 @@
       <br />
 
       <div>
-        <label> Confirm Password:</label><br>
+        <label> Confirm Password:</label><br />
         <input
           class="compass"
           type="password"
@@ -78,22 +90,24 @@
         />
       </div>
       <p class="passMsg"></p>
-      <br>
-      
-        
+      <br />
+
       <button type="submit" class="signUp">Sign-up</button>
     </form>
     <p>Already have an account? <a href="./login.html" id="login">Login</a></p>
-    
+
     <p><a href="./index.html">Back to Homepage</a></p>
 
     <script>
-      function initMap(){
-         const pickup = document.getElementById('address');
-         const autocompletePickup = new google.maps.places.Autocomplete(pickup);
+      function initMap() {
+        const pickup = document.getElementById("address");
+        const autocompletePickup = new google.maps.places.Autocomplete(pickup);
       }
-   </script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3FQeb4_K4bYBx-R_6W6HbxLhMWRH6Unc&libraries=places&callback=initMap"></script>
+    </script>
+    <script
+      type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3FQeb4_K4bYBx-R_6W6HbxLhMWRH6Unc&libraries=places&callback=initMap"
+    ></script>
     <script src="./scripts/register.js"></script>
   </body>
 </html>

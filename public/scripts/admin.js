@@ -1,5 +1,4 @@
 const token = localStorage.getItem("token");
-console.log("this is login", token);
 
 if (!token) {
   window.location.href = "./login.html";
@@ -55,7 +54,7 @@ const renderTableData = (data, ordersTable) => {
 
     const status = document.createElement("h2");
     status.className = "destinationh";
-    status.innerHTML = `<a href="/status.html"><i class="fa-thin fa-check"></i></a>`;
+    status.innerHTML = `<a href="/status.html"><i class="far fa-compass"></i>`;
     outputRow.append(status);
 
     dest.addEventListener("click", function (e) {

@@ -19,7 +19,6 @@ const register = (e) => {
   })
     .then((res) => res.json())
     .then((res) => {
-      console.log("this is res signup", res);
       if (res.token) {
         localStorage.setItem("token", res.token);
         localStorage.setItem("role", res.role);
@@ -32,17 +31,29 @@ const register = (e) => {
           window.location.href = "./admin.html";
         }
       } else {
-        alert("invalid field input");
+        alert(res.message);
       }
     })
     .catch();
 
   document.querySelector(".name").value = "";
+  document.querySelector('.name').addEventListener("input", function (e) {
+    e.preventDefault();
+    e.target.value = e.target.value.trim()
+})
   document.querySelector(".email").value = "";
+  document.querySelector('.email').addEventListener("input", function (e) {
+    e.preventDefault();
+    e.target.value = e.target.value.trim()
+})
   document.querySelector(".pass").value = "";
   document.querySelector(".compass").value = "";
   document.querySelector(".phoneNumber").value = "";
   document.querySelector(".address").value = "";
+  document.querySelector('.address').addEventListener("input", function (e) {
+    e.preventDefault();
+    e.target.value = e.target.value.trim()
+})
 };
 
 const passvalid = document.querySelector(".pass");
@@ -62,11 +73,12 @@ compassvalid.addEventListener("mouseout", function (e) {
     compasserr.innerHTML = "";
   }
 });
-
+const phone = document.querySelector(".phoneNumber");
+const errorMsg = document.querySelector(".errMsg");
+const text = document.querySelector(".text");
 function phonevalid() {
   const phone = document.querySelector(".phoneNumber").value;
   const errorMsg = document.querySelector(".errMsg");
-  const text = document.querySelector(".text");
   const pattern = /^(\+|00)[0-9]{1,3}[0-9]{4,14}(?:x.+)?$/;
 
   if (phone.match(pattern)) {
@@ -78,10 +90,13 @@ function phonevalid() {
   if (phone === "") {
     errorMsg.innerHTML = "";
   }
-
-  phone.addEventListener("change", () => {
-    phonevalid();
-    text.innerHTML = "";
-  });
 }
+phone.addEventListener("change", function () {
+  phonevalid();
+  text.innerHTML = "";
+});
+phone.addEventListener("click", () => {
+  text.innerHTML = "phone number must include a country code";
+  text.style.color = "red";
+});
 document.querySelector(".signUp").addEventListener("click", register);
