@@ -22,7 +22,7 @@
       <div>
         <label>Name:</label>
         <br />
-        <input class="name" placeholder="Input name" name="name" required />
+        <input class="name" placeholder="Input name" name="name" pattern="[A-Za-z0-9]{1,100}" required />
       </div>
       <br />
 
@@ -30,6 +30,7 @@
         <label>Email Address:</label>
         <br />
         <input
+        pattern="[A-Za-z0-9]{1,100}" 
         autocomplete="off"
           class="email"
           type="email"
