@@ -44,6 +44,40 @@ const theOrder = (e) => {
     .catch((error) => console.log("error occured", error));
 };
 
+const weight=document.querySelector("#Weight");
+weight.addEventListener("mouseout",function(e){
+const weight=document.querySelector("#Weight").value;
+const price=document.querySelector("#price")
+  e.preventDefault()  
+   if(weight){
+    price.value = weight * 330;
+    }
+    else{
+    price.value = "";
+    }
+})
+
+const phone = document.querySelector('#recipientNumber');
+function phonevalid() {
+  const phone = document.querySelector('#recipientNumber').value;
+  const errormsg = document.querySelector('.errorMsg');
+  const pattern = /^(\+|00)[0-9]{1,3}[0-9]{4,14}(?:x.+)?$/;
+   
+  if(phone.match(pattern)){
+      errormsg.innerHTML = "";
+  }
+  else{
+      errormsg.innerHTML = "invalid recepient number";
+      errormsg.style.color = "red";
+  }
+  if(phone === ""){
+      errormsg.innerHTML = "";
+  }
+
+}
+
+phone.addEventListener('change', phonevalid);
+
 document
   .getElementById("registration-form")
   .addEventListener("submit", theOrder);

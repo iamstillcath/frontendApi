@@ -14,7 +14,11 @@
           <form method="PUT" id="status-form" autocomplete="off">
             <h2>EDIT STATUS</h2>
             <h3>New Status:</h3>
-            <input type="text" id="status" name="status" class="field" /><br>
+            <select name="status" id="status">
+              <option value="">select status</option>
+              <option value="in-transit">in-transit</option>
+              <option value="delivered">delivered</option>
+            </select></br><br>
             <input type="submit" value="Change Status" class="statusButton" />
           </form>
         </div>

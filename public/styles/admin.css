@@ -9,7 +9,7 @@ h1{
     font-family: sans-serif;
 }
 button{
-    height:20px ;
+    height:30px ;
     width:70px;
    background-color: red;
    border: none;
@@ -18,10 +18,11 @@ button{
 }
 
 
-table , tr,th{
+table ,td,tr,th{
     border: 1px solid black;
     padding: 4px;
     text-align: center;
+    border-collapse: collapse;
   
 }
 
@@ -29,6 +30,6 @@ h2{
     font-size: 28px;
     color: black;
     display: inline-block;
-
+    padding: 5px;
 } 
   

@@ -80,10 +80,12 @@ const renderTableData = (data, orderTable) => {
       localStorage.setItem("orderId", trId);
     });
 
-    const id = localStorage.getItem("orderId");
     cancel.addEventListener("click", function (e) {
       e.preventDefault();
-
+      const trIid = e.target.closest("tr").children[0].innerHTML;
+      localStorage.setItem("orderId", trIid);
+      const id = localStorage.getItem("orderId");
+      console.log("this is trid delete", trIid);
       const url = "https://backfiles.herokuapp.com";
       const deleted = confirm("do u want to delete");
       if (deleted) {
@@ -100,6 +102,7 @@ const renderTableData = (data, orderTable) => {
           .then((res) => res.json())
           .then((res) => {
             if (res.message === "Order Deleted") {
+              window.location.href = "user.html";
               alert("Order successfully Deleted!");
               window.location.href = "user.html";
             } else {

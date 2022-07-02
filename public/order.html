@@ -31,6 +31,8 @@
             <h2>CREATE ORDER</h2>
             <h3>Product</h3>
             <input type="text" id="product" name="product"  class="field" required/><br />
+            <h3>Weight</h3>
+            <input type="number" id="Weight" name="Weight" min="0" class="field"required/><br />
             <h3>Price</h3>
             <input type="number" id="price" name="price" min="0" class="field"required/><br />
             <h3>Pick up location</h3>
@@ -43,7 +45,7 @@
             <input type="text" id="recipientName" name="recipientName" class="field" required/><br />
             <h3>Recipient Mobile Number</h3>
             <input type="tel" id="recipientNumber" name="recipientNumber" class="field" /><br>
-            
+            <p class="errorMsg"></p>
             <input type="submit" value="Create" class="submit" />
           </form>
         </div>
