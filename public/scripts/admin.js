@@ -36,7 +36,7 @@ const renderTableData = (data, ordersTable) => {
   data.forEach((output) => {
     let outputRow = document.createElement("tr");
     outputRow.innerHTML = `<th scope="row">${output._id}</th>
-                        <td>${output.product}</td>
+                        <td>${output.itemDescription}</td>
                         <td>${"₦" + output.price + ":00"}</td>
                         <td>${output.pickupLocation}</td>
                         <td class="remove-second">${output.destination}</td>

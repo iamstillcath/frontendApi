@@ -54,7 +54,7 @@ const renderTableData = (data, orderTable) => {
   data.forEach((output) => {
     let parcelRow = document.createElement("tr");
     parcelRow.innerHTML = `<th scope="row">${output._id}</th>
-                          <td>${output.product}</td>
+                          <td>${output.itemDescription}</td>
                           <td>${"₦" + output.price + ":00"}</td>
                           <td>${output.pickupLocation}</td>
                           <td class="remove-second">${output.destination}</td>

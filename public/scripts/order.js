@@ -16,7 +16,7 @@ const theOrder = (e) => {
     },
     body: JSON.stringify({
       user_Id: localStorage.getItem("userId"),
-      product: document.getElementById("product").value,
+      itemDescription: document.getElementById("itemDescription").value,
       price: document.getElementById("price").value,
       pickupLocation: document.getElementById("pickupLocation").value,
       currentLocation: document.getElementById("currentLocation").value,
@@ -29,7 +29,7 @@ const theOrder = (e) => {
     .then((data) => {
       if (data.message) {
         alert("parcel created successfully!");
-        document.getElementById("product").value = " ";
+        document.getElementById("itemDescription").value = " ";
         document.getElementById("price").value = " ";
         document.getElementById("pickupLocation").value = " ";
         document.getElementById("currentLocation").value = " ";
