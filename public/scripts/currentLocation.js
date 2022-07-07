@@ -22,7 +22,6 @@ const currentLocation = (e) => {
   })
     .then((res) => res.json())
     .then((res) => {
-      console.log("this is res", res);
       if (res.message) {
         alert("Current Location changed successfully!");
         window.location.href = "./admin.html";

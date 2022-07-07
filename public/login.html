@@ -4,41 +4,51 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Login</title>
     <link
       rel="stylesheet"
       type="text/css"
       media="screen"
       href="./styles/login.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+      integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
+      crossorigin="anonymous"
+    />
   </head>
+
+
   <body>
-    
-  <img class="logo" src="./styles/parcel-img.jpg">
+    <img class="logo" src="./styles/parcel-img.jpg" />
     <form id="loginpage" class="form">
-     
       <h1>Login your Parcel Delivery account to get started</h1>
       <br />
-      
-   
+
       <br />
-      <div>
+      <div >
         <label>Email Address:</label>
-        <br>
+        <br />
+        <i class="fa fa-envelope icon"></i>
         <input
+          pattern="[A-Za-z0-9]{1,100}"
           class="email"
           type="email"
           placeholder="Input email"
           name="email"
           required
         />
-        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+        <p class="word">Please input a valid email address</p>
       </div>
-      <br />
+      <p class="errMsgs"></p>
 
       <div>
         <label>Password:</label>
-        <br>
+        <br />
+        
+          <i class="fa fa-lock icon"></i>
+        
         <input
           class="pass"
           type="password"
@@ -51,10 +61,12 @@
 
       <button type="submit" class="loginBtn">Login</button>
     </form>
-    <p>Don't have an account? <a href="./register.html" id="loginReg">Register</a></p>
+    <p>
+      Don't have an account?
+      <a href="./register.html" id="loginReg">Register</a>
+    </p>
 
     <p><a href="./index.html">Back to Homepage</a></p>
-
 
     <script src="./scripts/login.js"></script>
   </body>

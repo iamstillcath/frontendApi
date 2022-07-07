@@ -43,6 +43,7 @@ margin: 0px;
     cursor: pointer;
     align-items: center;
     justify-content: center;
+    margin-left: 5px;
   }
   
   .loginBtn:hover {
@@ -59,5 +60,8 @@ margin: 0px;
     cursor: pointer;
   }
    
+  i{
+    font-size: 22px;
+  }
 
  
