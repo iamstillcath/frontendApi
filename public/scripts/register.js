@@ -78,7 +78,7 @@ function phonevalid() {
   if (phone.match(pattern)) {
     errorMsg.innerHTML = "";
   } else {
-    errorMsg.innerHTML = "Invalid phone number <br>(phone number must include a country code, starting with +)";
+    errorMsg.innerHTML = "Invalid phone number <br>(phone number must include a country code, starting with + sign)";
     errorMsg.style.color = "red";
   }
   if (phone === "") {
@@ -112,7 +112,7 @@ function emailvalid() {
     emailError.innerHTML = "";
   }
 }
-email.addEventListener("change", function () {
+email.addEventListener("change",  () =>{
   emailvalid();
   words.innerHTML = "";
 });
