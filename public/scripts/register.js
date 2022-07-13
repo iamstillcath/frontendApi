@@ -38,10 +38,17 @@ const register = (e) => {
         const emailError = document.querySelector(".errMsgs");
         emailError.innerHTML = res.errors.email;
         emailError.style.color = "red";
+        if(emailError.innerHTML==="undefined"){
+          emailError.innerHTML= ""
+        }
+
 
         const errName = document.querySelector(".nameError");
         errName.innerHTML = res.errors.name;
         errName.style.color = "red";
+        if(errName.innerHTML==="undefined"){
+          errName.innerHTML= ""
+        }
       }
     })
     .catch();
@@ -101,29 +108,5 @@ phone.addEventListener("click", () => {
   text.style.color = "red";
 });
 
-const email = document.querySelector(".email");
-const emailError = document.querySelector(".errMsgs");
-function emailvalid() {
-  const email = document.querySelector(".email").value;
-  const emailError = document.querySelector(".errMsgs");
-  const patterns = /[A-Za-z0-9]{1,100}/;
-
-  if (email.match(patterns)) {
-    emailError.innerHTML = "";
-  } else {
-   /* emailError.innerHTML = "Invalid email address <br>(please input a valid email address)";
-    emailError.style.color = "red";*/
-  }
-  if (email === "") {
-    emailError.innerHTML = "";
-  }
-}
-email.addEventListener("change",  () =>{
-  emailvalid();
-  words.innerHTML = "";
-});
-email.addEventListener("click", () => {
-  words.style.color = "red";
-})
 
 document.querySelector(".signUp").addEventListener("click", register);
