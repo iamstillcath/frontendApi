@@ -33,7 +33,18 @@ const register = (e) => {
           window.location.href = "./admin.html";
         }
       } else {
-        alert(res.message);
+        const emailError = document.querySelector(".errMsgs")
+        if (res.errors){
+        emailError.innerHTML=res.errors.email
+        emailError.style.color = "red";
+        }else{emailError.innerHTML=""}
+        const errName=document.querySelector(".nameError")
+        if (res.errors){
+        errName.innerHTML=res.errors.name
+        errName.style.color="red"
+        }else{
+          errName.innerHTML=""
+        }
       }
     })
     .catch();
@@ -78,7 +89,7 @@ function phonevalid() {
   if (phone.match(pattern)) {
     errorMsg.innerHTML = "";
   } else {
-    errorMsg.innerHTML = "Invalid phone number <br>(phone number must include a country code, starting with + sign)";
+    errorMsg.innerHTML = "phoneNumber should be atleast (8)characters! & should contain a country code";
     errorMsg.style.color = "red";
   }
   if (phone === "") {
@@ -94,30 +105,30 @@ phone.addEventListener("click", () => {
 });
 
 
-const email = document.querySelector(".email");
-const emailError = document.querySelector(".errMsgs");
-const words = document.querySelector(".word");
-function emailvalid() {
-  const email = document.querySelector(".email").value;
-  const emailError = document.querySelector(".errMsgs");
-  const patterns = /[A-Za-z0-9]{1,100}/;
+// const email = document.querySelector(".email");
+// const emailError = document.querySelector(".errMsgs");
+// const words = document.querySelector(".word");
+// function emailvalid() {
+//   const email = document.querySelector(".email").value;
+//   const emailError = document.querySelector(".errMsgs");
+//   const patterns = /[A-Za-z0-9]{1,100}/;
 
-  if (email.match(patterns)) {
-    emailError.innerHTML = "";
-  } else {
-    emailError.innerHTML = "Invalid email address <br>(please input a valid email address)";
-    emailError.style.color = "red";
-  }
-  if (email === "") {
-    emailError.innerHTML = "";
-  }
-}
-email.addEventListener("change",  () =>{
-  emailvalid();
-  words.innerHTML = "";
-});
-email.addEventListener("click", () => {
-  words.style.color = "red";
-})
+//   if (email.match(patterns)) {
+//     emailError.innerHTML = "";
+//   } else {
+//     emailError.innerHTML = "Invalid email address <br>(please input a valid email address)";
+//     emailError.style.color = "red";
+//   }
+//   if (email === "") {
+//     emailError.innerHTML = "";
+//   }
+// }
+// email.addEventListener("change",  () =>{
+//   emailvalid();
+//   words.innerHTML = "";
+// });
+// email.addEventListener("click", () => {
+//   words.style.color = "red";
+// })
 
 document.querySelector(".signUp").addEventListener("click", register);
