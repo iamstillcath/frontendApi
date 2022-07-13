@@ -1,7 +1,7 @@
-const url = "https://backfiles.herokuapp.com";
 const register = (e) => {
   e.preventDefault();
 
+  const url = "https://backfiles.herokuapp.com";
   fetch(`${url}/user/signup`, {
     method: "POST",
     headers: {
@@ -19,6 +19,7 @@ const register = (e) => {
   })
     .then((res) => res.json())
     .then((res) => {
+      console.log("this is res",res)
       if (res.token) {
         localStorage.setItem("token", res.token);
         const token = localStorage.getItem("token");
@@ -33,31 +34,26 @@ const register = (e) => {
           window.location.href = "./admin.html";
         }
       } else {
-        const emailError = document.querySelector(".errMsgs")
-        if (res.errors){
-        emailError.innerHTML=res.errors.email
+        alert(res.message)
+        const emailError = document.querySelector(".errMsgs");
+        emailError.innerHTML = res.errors.email;
         emailError.style.color = "red";
-        }else{emailError.innerHTML=""}
-        const errName=document.querySelector(".nameError")
-        if (res.errors){
-        errName.innerHTML=res.errors.name
-        errName.style.color="red"
-        }else{
-          errName.innerHTML=""
-        }
+
+        const errName = document.querySelector(".nameError");
+        errName.innerHTML = res.errors.name;
+        errName.style.color = "red";
       }
     })
     .catch();
 
-  document.querySelector('.name').addEventListener("input", function (e) {
+  document.querySelector(".name").addEventListener("input", function (e) {
     e.preventDefault();
-    e.target.value = e.target.value.trim()
-})
-  document.querySelector('.email').addEventListener("input", function (e) {
+    e.target.value = e.target.value.trim();
+  });
+  document.querySelector(".email").addEventListener("input", function (e) {
     e.preventDefault();
-    e.target.value = e.target.value.trim()
-})
-
+    e.target.value = e.target.value.trim();
+  });
 };
 
 const passvalid = document.querySelector(".pass");
@@ -89,7 +85,8 @@ function phonevalid() {
   if (phone.match(pattern)) {
     errorMsg.innerHTML = "";
   } else {
-    errorMsg.innerHTML = "phoneNumber should be atleast (8)characters! & should contain a country code";
+    errorMsg.innerHTML =
+      "Phone number should be atleast (8)characters! & should contain a country code";
     errorMsg.style.color = "red";
   }
   if (phone === "") {
@@ -104,31 +101,29 @@ phone.addEventListener("click", () => {
   text.style.color = "red";
 });
 
+const email = document.querySelector(".email");
+const emailError = document.querySelector(".errMsgs");
+function emailvalid() {
+  const email = document.querySelector(".email").value;
+  const emailError = document.querySelector(".errMsgs");
+  const patterns = /[A-Za-z0-9]{1,100}/;
 
-// const email = document.querySelector(".email");
-// const emailError = document.querySelector(".errMsgs");
-// const words = document.querySelector(".word");
-// function emailvalid() {
-//   const email = document.querySelector(".email").value;
-//   const emailError = document.querySelector(".errMsgs");
-//   const patterns = /[A-Za-z0-9]{1,100}/;
-
-//   if (email.match(patterns)) {
-//     emailError.innerHTML = "";
-//   } else {
-//     emailError.innerHTML = "Invalid email address <br>(please input a valid email address)";
-//     emailError.style.color = "red";
-//   }
-//   if (email === "") {
-//     emailError.innerHTML = "";
-//   }
-// }
-// email.addEventListener("change",  () =>{
-//   emailvalid();
-//   words.innerHTML = "";
-// });
-// email.addEventListener("click", () => {
-//   words.style.color = "red";
-// })
+  if (email.match(patterns)) {
+    emailError.innerHTML = "";
+  } else {
+   /* emailError.innerHTML = "Invalid email address <br>(please input a valid email address)";
+    emailError.style.color = "red";*/
+  }
+  if (email === "") {
+    emailError.innerHTML = "";
+  }
+}
+email.addEventListener("change",  () =>{
+  emailvalid();
+  words.innerHTML = "";
+});
+email.addEventListener("click", () => {
+  words.style.color = "red";
+})
 
 document.querySelector(".signUp").addEventListener("click", register);

@@ -27,7 +27,6 @@ const login = (e) => {
         localStorage.setItem("role", tokens.role);
 
         const role = localStorage.getItem("role");
-        console.log("this is role",role)
         if (role === "user") {
           alert("login succesful!");
           window.location.href = "./order.html";

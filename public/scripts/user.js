@@ -1,11 +1,7 @@
-const token = localStorage.getItem("token");
-
-if (!token) {
-  window.location.href = "./login.html";
-}
-
 const url = "https://backfiles.herokuapp.com";
 const userId = localStorage.getItem("userId");
+
+
 fetch(`${url}/parcels/user`, {
   method: "GET",
   headers: {

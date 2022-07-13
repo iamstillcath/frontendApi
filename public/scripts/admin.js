@@ -1,9 +1,3 @@
-const token = localStorage.getItem("token");
-
-if (!token) {
-  window.location.href = "./login.html";
-}
-
 const logout = document.getElementById("logout");
 
 logout.addEventListener("click", function () {

@@ -1,9 +1,5 @@
-const token = localStorage.getItem("token");
 const id = localStorage.getItem("orderId");
 
-if (!token) {
-  window.location.href = "./login.html";
-}
 
 const url = "https://backfiles.herokuapp.com";
 const changeStatus = (e) => {

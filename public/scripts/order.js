@@ -1,9 +1,6 @@
 const userId = localStorage.getItem("userId");
-const token = localStorage.getItem("token");
 
-if (!token) {
-  window.location.href = "./login.html";
-}
+
 const url = "https://backfiles.herokuapp.com";
 const theOrder = (e) => {
   e.preventDefault();
