@@ -35,7 +35,7 @@ const theOrder = (e) => {
         document.getElementById("recipientNumber").value = " ";
         window.location.href = "./user.html";
       } else {
-        alert(data.message);
+        alert(data.message.recipientNumber);
       }
     })
     .catch((error) => console.log("error occured", error));
