@@ -41,6 +41,13 @@ const theOrder = (e) => {
     .catch((error) => console.log("error occured", error));
 };
 
+const logoutBtn = document.getElementById("logout");
+
+logoutBtn.addEventListener("click", function () {
+  localStorage.clear();
+  window.location.href = "./login.html";
+});
+
 const weight=document.querySelector("#Weight");
 weight.addEventListener("mouseout",function(e){
 const weight=document.querySelector("#Weight").value;

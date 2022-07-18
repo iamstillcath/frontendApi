@@ -35,20 +35,27 @@ const register = (e) => {
         }
       } else {
         alert(res.message)
+      // console.log("this is res==>",res.messages)
         const emailError = document.querySelector(".errMsgs");
         emailError.innerHTML = res.errors.email;
         emailError.style.color = "red";
         if(emailError.innerHTML==="undefined"){
           emailError.innerHTML= ""
         }
+        // const compasserr = document.querySelector("#passMsg");
+        // compasserr.innerHTML= res.messages;
+        // compasserr.style.color = "red";
+        // if(compasserr.innerHTML==="undefined"){
+        //   compasserr.innerHTML= ""
+        // }
 
 
-        const errName = document.querySelector(".nameError");
-        errName.innerHTML = res.errors.name;
-        errName.style.color = "red";
-        if(errName.innerHTML==="undefined"){
-          errName.innerHTML= ""
-        }
+        // const errName = document.querySelector(".nameError");
+        // errName.innerHTML = res.errors.name;
+        // errName.style.color = "red";
+        // if(errName.innerHTML==="undefined"){
+        //   errName.innerHTML= ""
+        // }
       }
     })
     .catch();
@@ -109,4 +116,4 @@ phone.addEventListener("click", () => {
 });
 
 
-document.querySelector(".signUp").addEventListener("click", register);
+document.querySelector("#registerpage").addEventListener("submit", register);

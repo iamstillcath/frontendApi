@@ -68,4 +68,4 @@ email.addEventListener("click", () => {
 })
 
 
-document.querySelector(".loginBtn").addEventListener("click", login);
+document.querySelector("#loginpage").addEventListener("submit", login);

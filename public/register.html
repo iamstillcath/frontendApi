@@ -20,7 +20,7 @@
   </head>
   <body>
     <img class="logo" src="./styles/parcel-img.jpg" />
-    <form id="registerpage">
+    <form onsubmit="" id="registerpage">
       <h1>Parcel Delivery!!!</h1>
       <br />
       <h3>SIGNUP FOR NEW USERS</h3>
@@ -40,7 +40,6 @@
         <br />
         <i class="fa fa-envelope icon"></i>
         <input
-        pattern="[A-Za-z0-9]{1,100}" 
         autocomplete="off"
           class="email"
           type="email"
@@ -58,7 +57,6 @@
           <i class="fa fa-phone icon"></i>
           <input
             class="phoneNumber"
-            pattern="/^(\+|00)[0-9]{1,3}[0-9]{4,14}(?:x.+)?$/"
             placeholder="Input number"
             name="phoneNumber"
             required
@@ -93,6 +91,7 @@
           required
         />
       </div>
+      <p id="passMsg"></p>
       <br />
 
       <div>
