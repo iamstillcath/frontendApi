@@ -19,7 +19,7 @@ const register = (e) => {
   })
     .then((res) => res.json())
     .then((res) => {
-      console.log("this is res",res)
+      console.log("this is res", res);
       if (res.token) {
         localStorage.setItem("token", res.token);
         const token = localStorage.getItem("token");
@@ -34,13 +34,15 @@ const register = (e) => {
           window.location.href = "./admin.html";
         }
       } else {
-        alert(res.message)
-      // console.log("this is res==>",res.messages)
+        alert(res.message);
         const emailError = document.querySelector(".errMsgs");
         emailError.innerHTML = res.errors.email;
         emailError.style.color = "red";
-        if(emailError.innerHTML==="undefined"){
-          emailError.innerHTML= ""
+         document.querySelector(".signUp").disabled = true;
+        console.log("this is btn==>", btn);
+        if (emailError.innerHTML === "undefined") {
+          emailError.innerHTML = "";
+          document.querySelector(".signUp").disabled = false;
         }
         // const compasserr = document.querySelector("#passMsg");
         // compasserr.innerHTML= res.messages;
@@ -48,7 +50,6 @@ const register = (e) => {
         // if(compasserr.innerHTML==="undefined"){
         //   compasserr.innerHTML= ""
         // }
-
 
         // const errName = document.querySelector(".nameError");
         // errName.innerHTML = res.errors.name;
@@ -79,9 +80,11 @@ compassvalid.addEventListener("mouseout", function (e) {
 
   if (compassvalid.value === passvalid.value) {
     compasserr.innerHTML = "";
+    document.querySelector(".signUp").disabled = false;
   } else {
     compasserr.innerHTML = "password does not match";
     compasserr.style.color = "red";
+    document.querySelector(".signUp").disabled = true;
   }
   if (compassvalid.value === "") {
     compasserr.innerHTML = "";
@@ -98,10 +101,12 @@ function phonevalid() {
 
   if (phone.match(pattern)) {
     errorMsg.innerHTML = "";
+    document.querySelector(".signUp").disabled = false;
   } else {
     errorMsg.innerHTML =
       "Phone number should be atleast (8)characters! & should contain a country code";
     errorMsg.style.color = "red";
+    document.querySelector(".signUp").disabled = true;
   }
   if (phone === "") {
     errorMsg.innerHTML = "";
@@ -114,6 +119,5 @@ phone.addEventListener("change", function () {
 phone.addEventListener("click", () => {
   text.style.color = "red";
 });
-
 
 document.querySelector("#registerpage").addEventListener("submit", register);
