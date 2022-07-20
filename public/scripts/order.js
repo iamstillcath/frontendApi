@@ -16,7 +16,7 @@ const theOrder = (e) => {
       itemDescription: document.getElementById("itemDescription").value,
       price: document.getElementById("price").value,
       pickupLocation: document.getElementById("pickupLocation").value,
-      currentLocation: document.getElementById("currentLocation").value,
+      // currentLocation: document.getElementById("currentLocation").value,
       destination: document.getElementById("destination").value,
       recipientName: document.getElementById("recipientName").value,
       recipientNumber: document.getElementById("recipientNumber").value,
@@ -29,7 +29,7 @@ const theOrder = (e) => {
         document.getElementById("itemDescription").value = " ";
         document.getElementById("price").value = " ";
         document.getElementById("pickupLocation").value = " ";
-        document.getElementById("currentLocation").value = " ";
+        // document.getElementById("currentLocation").value = " ";
         document.getElementById("destination").value = " ";
         document.getElementById("recipientName").value = " ";
         document.getElementById("recipientNumber").value = " ";

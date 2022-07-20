@@ -44,12 +44,17 @@ const renderTableData = (data, ordersTable) => {
     const dest = document.createElement("h2");
     dest.innerHTML = `<i class="fas fa-edit"></i>`;
     dest.className = "locat";
-    outputRow.append(dest);
+    // outputRow.append(dest);
 
     const status = document.createElement("h2");
     status.className = "destinationh";
     status.innerHTML = `<a href="/status.html"><i class="far fa-compass"></i>`;
-    outputRow.append(status);
+    // outputRow.append(status);
+    const th=document.createElement("div")
+    th.append(dest)
+    th.append(status)
+    outputRow.append(th)
+    th.style.display="flex"
 
     dest.addEventListener("click", function (e) {
       e.preventDefault();

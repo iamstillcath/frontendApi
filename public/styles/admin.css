@@ -9,8 +9,8 @@ h1{
     font-family: sans-serif;
 }
 button{
-    height:30px ;
-    width:70px;
+    height:40px ;
+    width:80px;
    background-color: red;
    border: none;
    font-weight: bold;
@@ -20,16 +20,22 @@ button{
 
 table ,td,tr,th{
     border: 1px solid black;
-    padding: 4px;
+    padding: 1px;
     text-align: center;
     border-collapse: collapse;
   
+}
+td{
+    height: 10px;
 }
 
 h2{
     font-size: 28px;
     color: black;
     display: inline-block;
-    padding: 5px;
+  
 } 
+.list{
+    margin-left: 35%;
+}
   
