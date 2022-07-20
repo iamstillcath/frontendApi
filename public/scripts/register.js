@@ -1,3 +1,8 @@
+const emailError = document.querySelector(".errMsgs");
+const compasserr = document.querySelector(".passMsg");
+const errorMs = document.querySelector(".errMsg");
+
+
 const register = (e) => {
   e.preventDefault();
 
@@ -19,7 +24,6 @@ const register = (e) => {
   })
     .then((res) => res.json())
     .then((res) => {
-      console.log("this is res", res);
       if (res.token) {
         localStorage.setItem("token", res.token);
         const token = localStorage.getItem("token");
@@ -34,33 +38,22 @@ const register = (e) => {
           window.location.href = "./admin.html";
         }
       } else {
-        alert(res.message);
+       if(res.message==="Account already exist for this Email"){
+        alert("Account already exist for this EmailAddress")
+       }
+       
         const emailError = document.querySelector(".errMsgs");
         emailError.innerHTML = res.errors.email;
         emailError.style.color = "red";
-         document.querySelector(".signUp").disabled = true;
-        console.log("this is btn==>", btn);
+
         if (emailError.innerHTML === "undefined") {
           emailError.innerHTML = "";
-          document.querySelector(".signUp").disabled = false;
         }
-        // const compasserr = document.querySelector("#passMsg");
-        // compasserr.innerHTML= res.messages;
-        // compasserr.style.color = "red";
-        // if(compasserr.innerHTML==="undefined"){
-        //   compasserr.innerHTML= ""
-        // }
-
-        // const errName = document.querySelector(".nameError");
-        // errName.innerHTML = res.errors.name;
-        // errName.style.color = "red";
-        // if(errName.innerHTML==="undefined"){
-        //   errName.innerHTML= ""
-        // }
+ 
       }
     })
     .catch();
-
+}
   document.querySelector(".name").addEventListener("input", function (e) {
     e.preventDefault();
     e.target.value = e.target.value.trim();
@@ -69,22 +62,25 @@ const register = (e) => {
     e.preventDefault();
     e.target.value = e.target.value.trim();
   });
-};
+
 
 const passvalid = document.querySelector(".pass");
 const compassvalid = document.querySelector(".compass");
-const compasserr = document.querySelector(".passMsg");
+const compasser = document.querySelector(".passMsg");
 
 compassvalid.addEventListener("mouseout", function (e) {
   e.preventDefault();
 
   if (compassvalid.value === passvalid.value) {
     compasserr.innerHTML = "";
-    document.querySelector(".signUp").disabled = false;
+    const btn=  document.querySelector(".signUp").disabled=false
+    // console.log("this is password==>",btn,compasserr)
+ 
   } else {
     compasserr.innerHTML = "password does not match";
     compasserr.style.color = "red";
-    document.querySelector(".signUp").disabled = true;
+    const btn=  document.querySelector(".signUp").disabled = true;
+    // console.log("this is password==>",btn,compasserr)
   }
   if (compassvalid.value === "") {
     compasserr.innerHTML = "";
@@ -101,12 +97,12 @@ function phonevalid() {
 
   if (phone.match(pattern)) {
     errorMsg.innerHTML = "";
-    document.querySelector(".signUp").disabled = false;
+  
   } else {
     errorMsg.innerHTML =
       "Phone number should be atleast (8)characters! & should contain a country code";
     errorMsg.style.color = "red";
-    document.querySelector(".signUp").disabled = true;
+   
   }
   if (phone === "") {
     errorMsg.innerHTML = "";
@@ -119,5 +115,40 @@ phone.addEventListener("change", function () {
 phone.addEventListener("click", () => {
   text.style.color = "red";
 });
+
+
+
+const email = document.querySelector(".email");
+const emailerr = document.querySelector(".errMsgs");
+const texts = document.querySelector(".words");
+function emailvalid() {
+  const email = document.querySelector(".email").value;
+  const emailerr = document.querySelector(".errMsgs");
+  const pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+
+  if (email.match(pattern)) {
+    emailerr.innerHTML = "";
+    
+  
+  } else {
+    emailerr.innerHTML =
+      "Enter a valid email address!";
+    emailerr.style.color = "red";
+   
+  }
+  if (email === "") {
+    errorMsg.innerHTML = "";
+  }
+}
+email.addEventListener("click", () => {
+  emailvalid()
+  text.style.color = "red";
+});
+email.addEventListener("change", function () {
+  emailvalid();
+  texts.innerHTML = "";
+});
+
+
 
 document.querySelector("#registerpage").addEventListener("submit", register);

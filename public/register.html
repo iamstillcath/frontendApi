@@ -12,11 +12,11 @@
       href="./styles/register.css"
     />
     <link
-    rel="stylesheet"
-    href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
-    integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
-    crossorigin="anonymous"
-  />
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+      integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <img class="logo" src="./styles/parcel-img.jpg" />
@@ -28,11 +28,10 @@
       <div>
         <label>Name:</label>
         <br />
-        
+
         <i class="fa fa-user icon"></i>
-        <input class="name" placeholder="Input name" name="name" pattern="[A-Za-z0-9]{1,100}" required />
+        <input class="name" placeholder="Input name" name="name" required />
       </div>
-      <p class="nameError"></p>
       <br />
 
       <div>
@@ -40,28 +39,28 @@
         <br />
         <i class="fa fa-envelope icon"></i>
         <input
-        autocomplete="off"
+          autocomplete="off"
           class="email"
           type="email"
           placeholder="Input email"
           name="email"
           required
         />
-        <!-- <p class="word">Please input a valid email address</p> -->
+        <p class="words">Please input a valid email address</p>
       </div>
       <p class="errMsgs"></p>
       <br />
       <div>
-          <label>Phone number:</label>
-          <br />
-          <i class="fa fa-phone icon"></i>
-          <input
-            class="phoneNumber"
-            placeholder="Input number"
-            name="phoneNumber"
-            required
-          />
-          <p class="text">(+234)mobile number must start with a country code</p>
+        <label>Phone number:</label>
+        <br />
+        <i class="fa fa-phone icon"></i>
+        <input
+          class="phoneNumber"
+          placeholder="Input number"
+          name="phoneNumber"
+          required
+        />
+        <p class="text">(+234)mobile number must start with a country code</p>
       </div>
       <p class="errMsg"></p>
       <br />
@@ -83,7 +82,7 @@
         <label>Password:</label><br />
         <i class="fa fa-lock icon"></i>
         <input
-        autocomplete="off"
+          autocomplete="off"
           class="pass"
           type="password"
           placeholder="input password"
