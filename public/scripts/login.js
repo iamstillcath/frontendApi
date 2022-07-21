@@ -40,32 +40,37 @@ const login = (e) => {
     .catch();
 };
 
-
 const email = document.querySelector(".email");
-const emailError = document.querySelector(".errMsgs");
-const words = document.querySelector(".word");
+const emailerr = document.querySelector(".errMsgs");
+const texts = document.querySelector(".words");
 function emailvalid() {
   const email = document.querySelector(".email").value;
-  const emailError = document.querySelector(".errMsgs");
-  const patterns = /[A-Za-z0-9]{1,100}/;
+  const emailerr = document.querySelector(".errMsgs");
+  const pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
-  if (email.match(patterns)) {
-    emailError.innerHTML = "";
+  if (email.match(pattern)) {
+    emailerr.innerHTML = "";
+    const btn = (document.querySelector(".loginBtn").disabled = false);
+  
   } else {
-    emailError.innerHTML = "Invalid email address <br>(please input a valid email address)";
-    emailError.style.color = "red";
+    emailerr.innerHTML = "Enter a valid email address!";
+    emailerr.style.color = "red";
   }
-  if (email === "") {
-    emailError.innerHTML = "";
-  }
+
 }
+document.querySelector(".loginBtn").addEventListener("click", () => {
+  if (emailerr.innerHTML === "") {
+    // const btn = (document.querySelector(".loginBtn").disabled = false);
+   
+  } else {
+    emailerr.innerHTML === "Enter a valid email address!";
+    const btn = (document.querySelector(".loginBtn").disabled = true);
+    console.log("click own==>",btn)
+  }
+});
 email.addEventListener("change", function () {
   emailvalid();
-  words.innerHTML = "";
+  texts.innerHTML = "";
 });
-email.addEventListener("click", () => {
-  words.style.color = "red";
-})
-
 
 document.querySelector("#loginpage").addEventListener("submit", login);

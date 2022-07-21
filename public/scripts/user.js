@@ -1,6 +1,7 @@
+const showHeader = document.getElementById("table");
+
 const url = "https://backfiles.herokuapp.com";
 const userId = localStorage.getItem("userId");
-
 
 fetch(`${url}/parcels/user`, {
   method: "GET",
@@ -17,6 +18,7 @@ fetch(`${url}/parcels/user`, {
       document.querySelector("#error-msg").innerHTML =
         "You do not have any Order yet";
     } else {
+      showHeader.className = "show";
       data.sort((adm, us) => adm._id - us._id);
       renderTableData(data, orderTable);
 
@@ -81,7 +83,6 @@ const renderTableData = (data, orderTable) => {
       const trIid = e.target.closest("tr").children[0].innerHTML;
       localStorage.setItem("orderId", trIid);
       const id = localStorage.getItem("orderId");
-      console.log("this is trid delete", trIid);
       const url = "https://backfiles.herokuapp.com";
       const deleted = confirm("do u want to delete");
       if (deleted) {

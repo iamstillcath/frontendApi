@@ -2,9 +2,11 @@ const emailError = document.querySelector(".errMsgs");
 const compasserr = document.querySelector(".passMsg");
 const errorMs = document.querySelector(".errMsg");
 
-
 const register = (e) => {
   e.preventDefault();
+
+  if (emailError.innerHTML === "" && compasserr.innerHTML === "" && errorMs.innerHTML === "") {
+  
 
   const url = "https://backfiles.herokuapp.com";
   fetch(`${url}/user/signup`, {
@@ -38,10 +40,10 @@ const register = (e) => {
           window.location.href = "./admin.html";
         }
       } else {
-       if(res.message==="Account already exist for this Email"){
-        alert("Account already exist for this EmailAddress")
-       }
-       
+        if (res.message === "Account already exist for this Email") {
+          alert("Account already exist for this EmailAddress");
+        }
+
         const emailError = document.querySelector(".errMsgs");
         emailError.innerHTML = res.errors.email;
         emailError.style.color = "red";
@@ -49,20 +51,19 @@ const register = (e) => {
         if (emailError.innerHTML === "undefined") {
           emailError.innerHTML = "";
         }
- 
       }
     })
     .catch();
-}
-  document.querySelector(".name").addEventListener("input", function (e) {
-    e.preventDefault();
-    e.target.value = e.target.value.trim();
-  });
-  document.querySelector(".email").addEventListener("input", function (e) {
-    e.preventDefault();
-    e.target.value = e.target.value.trim();
-  });
-
+  }
+};
+document.querySelector(".name").addEventListener("input", function (e) {
+  e.preventDefault();
+  e.target.value = e.target.value.trim();
+});
+document.querySelector(".email").addEventListener("input", function (e) {
+  e.preventDefault();
+  e.target.value = e.target.value.trim();
+});
 
 const passvalid = document.querySelector(".pass");
 const compassvalid = document.querySelector(".compass");
@@ -73,13 +74,12 @@ compassvalid.addEventListener("mouseout", function (e) {
 
   if (compassvalid.value === passvalid.value) {
     compasserr.innerHTML = "";
-    const btn=  document.querySelector(".signUp").disabled=false
+    const btn = (document.querySelector(".signUp").disabled = false);
     // console.log("this is password==>",btn,compasserr)
- 
   } else {
     compasserr.innerHTML = "password does not match";
     compasserr.style.color = "red";
-    const btn=  document.querySelector(".signUp").disabled = true;
+    const btn = (document.querySelector(".signUp").disabled = true);
     // console.log("this is password==>",btn,compasserr)
   }
   if (compassvalid.value === "") {
@@ -87,7 +87,19 @@ compassvalid.addEventListener("mouseout", function (e) {
   }
 });
 
+const passlength = document.querySelector(".pass");
+const compasserrr = document.querySelector("#passMsg");
+passlength.addEventListener("mouseout", function () {
+  if (passlength.value.length <= 5) {
+    compasserrr.innerHTML = "Password should be at least 6 characters long";
+    compasserrr.style.color = "red";
+  } else {
+    compasserrr.innerHTML = "";
+  }
+});
+
 const phone = document.querySelector(".phoneNumber");
+console.log("this is phone", phone);
 const errorMsg = document.querySelector(".errMsg");
 const text = document.querySelector(".text");
 function phonevalid() {
@@ -97,12 +109,10 @@ function phonevalid() {
 
   if (phone.match(pattern)) {
     errorMsg.innerHTML = "";
-  
   } else {
     errorMsg.innerHTML =
       "Phone number should be atleast (8)characters! & should contain a country code";
     errorMsg.style.color = "red";
-   
   }
   if (phone === "") {
     errorMsg.innerHTML = "";
@@ -116,8 +126,6 @@ phone.addEventListener("click", () => {
   text.style.color = "red";
 });
 
-
-
 const email = document.querySelector(".email");
 const emailerr = document.querySelector(".errMsgs");
 const texts = document.querySelector(".words");
@@ -128,27 +136,28 @@ function emailvalid() {
 
   if (email.match(pattern)) {
     emailerr.innerHTML = "";
-    
-  
   } else {
-    emailerr.innerHTML =
-      "Enter a valid email address!";
+    emailerr.innerHTML = "Enter a valid email address!";
     emailerr.style.color = "red";
-   
   }
   if (email === "") {
     errorMsg.innerHTML = "";
   }
 }
 email.addEventListener("click", () => {
-  emailvalid()
+  emailvalid();
   text.style.color = "red";
 });
 email.addEventListener("change", function () {
   emailvalid();
   texts.innerHTML = "";
 });
-
-
+const confirms = document.querySelector(".compass");
+confirms.addEventListener("mouseout", function () {
+  if (confirms.value === "") {
+    document.querySelector(".passMsg").innerHTML =
+      "please fill the input field";
+  }
+});
 
 document.querySelector("#registerpage").addEventListener("submit", register);

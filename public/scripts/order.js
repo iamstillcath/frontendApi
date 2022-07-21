@@ -29,7 +29,6 @@ const theOrder = (e) => {
         document.getElementById("itemDescription").value = " ";
         document.getElementById("price").value = " ";
         document.getElementById("pickupLocation").value = " ";
-        // document.getElementById("currentLocation").value = " ";
         document.getElementById("destination").value = " ";
         document.getElementById("recipientName").value = " ";
         document.getElementById("recipientNumber").value = " ";
