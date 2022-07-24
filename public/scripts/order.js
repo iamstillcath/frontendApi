@@ -1,6 +1,5 @@
 const userId = localStorage.getItem("userId");
 
-
 const url = "https://backfiles.herokuapp.com";
 const theOrder = (e) => {
   e.preventDefault();
@@ -16,7 +15,6 @@ const theOrder = (e) => {
       itemDescription: document.getElementById("itemDescription").value,
       price: document.getElementById("price").value,
       pickupLocation: document.getElementById("pickupLocation").value,
-      // currentLocation: document.getElementById("currentLocation").value,
       destination: document.getElementById("destination").value,
       recipientName: document.getElementById("recipientName").value,
       recipientNumber: document.getElementById("recipientNumber").value,
@@ -34,7 +32,7 @@ const theOrder = (e) => {
         document.getElementById("recipientNumber").value = " ";
         window.location.href = "./user.html";
       } else {
-        alert(data.message.recipientNumber);
+        // alert(data.message.recipientNumber);
       }
     })
     .catch((error) => console.log("error occured", error));
@@ -47,40 +45,54 @@ logoutBtn.addEventListener("click", function () {
   window.location.href = "./login.html";
 });
 
-const weight=document.querySelector("#Weight");
-weight.addEventListener("mouseout",function(e){
-const weight=document.querySelector("#Weight").value;
-const price=document.querySelector("#price")
-  e.preventDefault()  
-   if(weight){
-    price.value = weight * 330;
-    }
-    else{
+const weight = document.querySelector("#Weight");
+weight.addEventListener("input", function (e) {
+  const weight = document.querySelector("#Weight").value;
+  const price = document.querySelector("#price");
+
+  e.preventDefault();
+  if (weight) {
+    price.value = weight* 330;
+  } else {
     price.value = "";
-    }
-})
+  }
 
-const phone = document.querySelector('#recipientNumber');
+});
+
+// const weigh=document.getElementById("price")
+// weigh.addEventListener("input",function(){
+//   const pric=document.getElementById("price").innerHTML
+//   console.log("this is price==>",pric)
+// })
+
+const phone = document.querySelector("#recipientNumber");
 function phonevalid() {
-  const phone = document.querySelector('#recipientNumber').value;
-  const errormsg = document.querySelector('.errorMsg');
-  const pattern = /^(\+|00)[0-9]{1,3}[0-9]{4,14}(?:x.+)?$/;
-   
-  if(phone.match(pattern)){
-      errormsg.innerHTML = "";
-  }
-  else{
-      errormsg.innerHTML = "invalid recepient number";
-      errormsg.style.color = "red";
-  }
-  if(phone === ""){
-      errormsg.innerHTML = "";
-  }
+  const phone = document.querySelector("#recipientNumber").value;
+  const errormsg = document.querySelector(".errorMsg");
+  const pattern = /^(\+|00)[0-9]{1,3}[0-9]{7,14}(?:x.+)?$/;
 
+  if (phone.match(pattern)) {
+    errormsg.innerHTML = "";
+    document.querySelector(".submit").disabled = false;
+  } else {
+    errormsg.innerHTML =
+      "Phone number should be atleast (8)characters! & should contain a country code";
+    errormsg.style.color = "red";
+  }
+  if (phone === "") {
+    errormsg.innerHTML = "";
+    document.querySelector(".submit").disabled = false;
+  }
 }
 
-phone.addEventListener('change', phonevalid);
+phone.addEventListener("input", phonevalid);
 
+phone.addEventListener("input", function () {
+  const errormsg = document.querySelector(".errorMsg");
+  if (errormsg.innerHTML === "invalid recepient number") {
+    document.querySelector(".submit").disabled = true;
+  }
+});
 document
   .getElementById("registration-form")
   .addEventListener("submit", theOrder);

@@ -53,7 +53,7 @@ const renderTableData = (data, orderTable) => {
     let parcelRow = document.createElement("tr");
     parcelRow.innerHTML = `<th scope="row">${output._id}</th>
                           <td>${output.itemDescription}</td>
-                          <td>${"₦" + output.price + ":00"}</td>
+                          <td>${"₦" + output.price.toLocaleString() + ".00"}</td>
                           <td>${output.pickupLocation}</td>
                           <td class="remove-second">${output.destination}</td>
                           <td>${output.currentLocation}</td>
@@ -61,15 +61,21 @@ const renderTableData = (data, orderTable) => {
                           <td>${output.recipientNumber}</td>
                           <td>${output.status}</td>
                            `;
+                           const price =document.getElementById("price");
+                           console.log("price==>",price)
     orderTable.append(parcelRow);
 
     const dest = document.createElement("h2");
+    const desti = document.createElement("td");
     dest.innerHTML = `<i class="fas fa-edit"></i>`;
-    parcelRow.append(dest);
+    desti.append(dest)
+    parcelRow.append(desti);
 
     const cancel = document.createElement("h2");
+    const cancell = document.createElement("td");
     cancel.innerHTML = `<a href="./delete.html"> <i class="fas fa-times"></i></a>`;
-    parcelRow.append(cancel);
+    cancell.append(cancel)
+    parcelRow.append(cancell);
 
     dest.addEventListener("click", function (e) {
       e.preventDefault();
@@ -77,14 +83,14 @@ const renderTableData = (data, orderTable) => {
       const trId = e.target.closest("tr").children[0].innerHTML;
       localStorage.setItem("orderId", trId);
     });
+ 
 
     cancel.addEventListener("click", function (e) {
       e.preventDefault();
-      const trIid = e.target.closest("tr").children[0].innerHTML;
-      localStorage.setItem("orderId", trIid);
+    
       const id = localStorage.getItem("orderId");
       const url = "https://backfiles.herokuapp.com";
-      const deleted = confirm("do u want to delete");
+      const deleted = confirm("do you want to delete");
       if (deleted) {
         fetch(`${url}/parcels/${id}/delete`, {
           method: "DELETE",
@@ -110,6 +116,7 @@ const renderTableData = (data, orderTable) => {
       }
       const trId = e.target.closest("tr").children[0].innerHTML;
       localStorage.setItem("orderId", trId);
+
     });
   });
 };

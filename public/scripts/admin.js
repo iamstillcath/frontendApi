@@ -1,4 +1,5 @@
 const logout = document.getElementById("logout");
+const showHeader = document.getElementById("table");
 
 logout.addEventListener("click", function () {
   localStorage.clear();
@@ -21,6 +22,7 @@ fetch(`${url}/parcels`, {
       document.querySelector("#error-msg").innerHTML =
         "You do not have any Parcel Delivery Order yet";
     } else {
+      showHeader.className = "show";
       data.sort((a, b) => a.id - b.id);
       renderTableData(data, ordersTable);
     }
@@ -28,10 +30,10 @@ fetch(`${url}/parcels`, {
 
 const renderTableData = (data, ordersTable) => {
   data.forEach((output) => {
-    let outputRow = document.createElement("tr");
-    outputRow.innerHTML = `<th scope="row">${output._id}</th>
+    let parcelRow = document.createElement("tr");
+    parcelRow.innerHTML = `<th scope="row">${output._id}</th>
                         <td>${output.itemDescription}</td>
-                        <td>${"₦" + output.price + ":00"}</td>
+                        <td>${"₦" + output.price.toLocaleString() + ".00"}</td>
                         <td>${output.pickupLocation}</td>
                         <td class="remove-second">${output.destination}</td>
                         <td>${output.currentLocation}</td>
@@ -39,22 +41,23 @@ const renderTableData = (data, ordersTable) => {
                         <td>${output.recipientNumber}</td>
                         <td>${output.status}</td>
                            `;
-    ordersTable.append(outputRow);
+    ordersTable.append(parcelRow);
 
     const dest = document.createElement("h2");
+    const desti = document.createElement("td");
     dest.innerHTML = `<i class="fas fa-edit"></i>`;
     dest.className = "locat";
-    // outputRow.append(dest);
+    parcelRow.append(dest);
 
     const status = document.createElement("h2");
+    const statuss = document.createElement("td");
     status.className = "destinationh";
     status.innerHTML = `<a href="/status.html"><i class="far fa-compass"></i>`;
-    // outputRow.append(status);
-    const th=document.createElement("div")
-    th.append(dest)
-    th.append(status)
-    outputRow.append(th)
-    th.style.display="flex"
+    statuss.append(status);
+    const th = document.createElement("div");
+ 
+    parcelRow.append(statuss);
+    th.style.display = "flex";
 
     dest.addEventListener("click", function (e) {
       e.preventDefault();

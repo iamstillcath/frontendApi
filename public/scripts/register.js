@@ -69,18 +69,16 @@ const passvalid = document.querySelector(".pass");
 const compassvalid = document.querySelector(".compass");
 const compasser = document.querySelector(".passMsg");
 
-compassvalid.addEventListener("mouseout", function (e) {
+compassvalid.addEventListener("input", function (e) {
   e.preventDefault();
 
   if (compassvalid.value === passvalid.value) {
     compasserr.innerHTML = "";
-    const btn = (document.querySelector(".signUp").disabled = false);
-    // console.log("this is password==>",btn,compasserr)
+    (document.querySelector(".signUp").disabled = false);
   } else {
     compasserr.innerHTML = "password does not match";
     compasserr.style.color = "red";
-    const btn = (document.querySelector(".signUp").disabled = true);
-    // console.log("this is password==>",btn,compasserr)
+    (document.querySelector(".signUp").disabled = true);
   }
   if (compassvalid.value === "") {
     compasserr.innerHTML = "";
@@ -89,7 +87,7 @@ compassvalid.addEventListener("mouseout", function (e) {
 
 const passlength = document.querySelector(".pass");
 const compasserrr = document.querySelector("#passMsg");
-passlength.addEventListener("mouseout", function () {
+passlength.addEventListener("input", function () {
   if (passlength.value.length <= 5) {
     compasserrr.innerHTML = "Password should be at least 6 characters long";
     compasserrr.style.color = "red";
